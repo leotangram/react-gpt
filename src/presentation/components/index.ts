@@ -1,5 +1,6 @@
 export { GPTMessage } from './chat-bubbles/GPTMessage'
 export { MyMessage } from './chat-bubbles/MyMessage'
 export { TextMessageBox } from './chat-input-boxes/TextMessageBox'
+export { TextMessageBoxFile } from './chat-input-boxes/TextMessageBoxFile'
 export { SidebarMenuItem } from './sidebar/SidebarMenuItem'
 export { TypingLoader } from './loaders/TypingLoader'
