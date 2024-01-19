@@ -4,14 +4,14 @@ import {
   MyMessage,
   TextMessageBox,
   TypingLoader
-} from '../../components'
+} from '../components'
 
 type Message = {
   text: string
   isGPT: boolean
 }
 
-export const OrthographyPage = () => {
+export const ChatTemplate = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [messages, setMessages] = useState<Message[]>([])
 
