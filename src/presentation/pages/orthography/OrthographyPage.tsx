@@ -1,4 +1,4 @@
-import { GPTMessage, MyMessage } from '../../components'
+import { GPTMessage, MyMessage, TypingLoader } from '../../components'
 
 export const OrthographyPage = () => {
   return (
@@ -7,6 +7,7 @@ export const OrthographyPage = () => {
         <div className="grid grid-cols-12 gap-y-2">
           <GPTMessage text="Hola, puedes escribir tu texto en español y te ayudo con las correcciones" />
           <MyMessage text="HOli" />
+          <TypingLoader className="fade-in" />
         </div>
       </div>
     </div>
