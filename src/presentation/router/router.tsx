@@ -8,7 +8,8 @@ import {
   ProsConsPage,
   ProsConsStreamPage,
   TextToAudioPage,
-  TranslatePage
+  TranslatePage,
+  WorkerPage
 } from '../pages'
 import { DashboardLayout } from '../layouts/DashboardLayout'
 
@@ -75,6 +76,13 @@ export const menuRoutes = [
     title: 'Asistente',
     description: 'Información del asistente',
     component: <AssistantPage />
+  },
+  {
+    to: '/worker',
+    icon: 'fa-solid fa-user',
+    title: 'Worker',
+    description: 'Worker',
+    component: <WorkerPage />
   }
 ]
 
