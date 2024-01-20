@@ -5,6 +5,7 @@ import {
   TextMessageBox,
   TypingLoader
 } from '../../components'
+import { orthographyUseCase } from '../../../core/use-cases'
 
 type Message = {
   text: string
@@ -19,7 +20,9 @@ export const OrthographyPage = () => {
     setIsLoading(true)
     setMessages(prev => [...prev, { text, isGPT: false }])
 
-    // TODO: UseCase
+    const data = await orthographyUseCase(text)
+
+    console.log(data)
 
     setIsLoading(false)
 
