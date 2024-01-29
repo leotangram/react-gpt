@@ -20,11 +20,36 @@ export const ProsConsStreamPage = () => {
     setIsLoading(true)
     setMessages(prev => [...prev, { text, isGPT: false }])
 
-    await prosConsStreamUseCase(text)
+    const reader = await prosConsStreamUseCase(text)
 
     setIsLoading(false)
 
-    // TODO: Add GPT message in true
+    if (!reader) return alert('No se pudo conectar con el servidor')
+
+    const decoder = new TextDecoder()
+    let message = ''
+
+    setMessages(prevMessages => [
+      ...prevMessages,
+      { text: message, isGPT: true }
+    ])
+
+    while (true) {
+      const { value, done } = await reader.read()
+
+      if (done) break
+
+      const decodedChunk = decoder.decode(value, { stream: true })
+
+      message += decodedChunk
+
+      setMessages(prevMessages => {
+        const newMessages = [...prevMessages]
+
+        newMessages[newMessages.length - 1].text = message
+        return newMessages
+      })
+    }
   }
 
   return (
@@ -34,10 +59,7 @@ export const ProsConsStreamPage = () => {
           <GPTMessage text="Hola, puedes escribir tu texto en español y te ayudo con las correcciones" />
           {messages.map(({ isGPT, text }, index) =>
             isGPT ? (
-              <GPTMessage
-                key={Math.random() + index}
-                text="Esto es de OpenAI"
-              />
+              <GPTMessage key={Math.random() + index} text={text} />
             ) : (
               <MyMessage key={Math.random() + index} text={text} />
             )
