@@ -91,9 +91,9 @@ export const router = createBrowserRouter([
     path: '/',
     element: <DashboardLayout />,
     children: [
-      ...menuRoutes.map(route => ({
-        path: route.to,
-        element: route.component
+      ...menuRoutes.map(({ to, component }) => ({
+        path: to,
+        element: component
       })),
       {
         path: '',

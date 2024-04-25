@@ -56,7 +56,7 @@ export const ProsConsStreamPage = () => {
     <div className="chat-container">
       <div className="chat-messages">
         <div className="grid grid-cols-12 gap-y-2">
-          <GPTMessage text="Hola, puedes escribir tu texto en español y te ayudo con las correcciones" />
+          <GPTMessage text="Qué deseas comparar hoy?" />
           {messages.map(({ isGPT, text }, index) =>
             isGPT ? (
               <GPTMessage key={Math.random() + index} text={text} />

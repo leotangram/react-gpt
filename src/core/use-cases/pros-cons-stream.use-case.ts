@@ -1,7 +1,7 @@
 export const prosConsStreamUseCase = async (prompt: string) => {
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_GPT_API}/pros-cons-discusser-stream`,
+      `${import.meta.env.VITE_GPT_API}/pros-cons-discussion-stream`,
       {
         method: 'POST',
         headers: {

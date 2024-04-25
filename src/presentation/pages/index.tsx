@@ -1,4 +1,3 @@
-export * from './assistant/AssistantPage'
 export { AssistantPage } from './assistant/AssistantPage'
 export { AudioToTextPage } from './audio-to-text/AudioToTextPage'
 export { ImageGenerationPage } from './image-generation/ImageGenerationPage'

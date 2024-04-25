@@ -3,7 +3,7 @@ import type { ProsConsResponse } from '../../interfaces'
 export const prosConsUseCase = async (prompt: string) => {
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_GPT_API}/pros-cons-discusser`,
+      `${import.meta.env.VITE_GPT_API}/pros-cons-discussion`,
       {
         method: 'POST',
         headers: {
