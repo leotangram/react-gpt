@@ -5,7 +5,7 @@ import {
   TextMessageBox,
   TypingLoader
 } from '../../components'
-import { prosConsStreamUseCase } from '../../../core/use-cases'
+import { prosConsStreamGeneratorUseCase } from '../../../core/use-cases'
 
 type Message = {
   text: string
@@ -20,33 +20,16 @@ export const ProsConsStreamPage = () => {
     setIsLoading(true)
     setMessages(prev => [...prev, { text, isGPT: false }])
 
-    const reader = await prosConsStreamUseCase(text)
-
+    const stream = await prosConsStreamGeneratorUseCase(text)
     setIsLoading(false)
 
-    if (!reader) return alert('No se pudo conectar con el servidor')
+    setMessages(prevMessages => [...prevMessages, { text: '', isGPT: true }])
 
-    const decoder = new TextDecoder()
-    let message = ''
-
-    setMessages(prevMessages => [
-      ...prevMessages,
-      { text: message, isGPT: true }
-    ])
-
-    while (true) {
-      const { value, done } = await reader.read()
-
-      if (done) break
-
-      const decodedChunk = decoder.decode(value, { stream: true })
-
-      message += decodedChunk
-
+    for await (const text of stream) {
       setMessages(prevMessages => {
         const newMessages = [...prevMessages]
 
-        newMessages[newMessages.length - 1].text = message
+        newMessages[newMessages.length - 1].text = text
         return newMessages
       })
     }
