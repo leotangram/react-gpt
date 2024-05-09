@@ -1,4 +1,5 @@
 export { GPTMessage } from './chat-bubbles/GPTMessage'
+export { GPTMessageAudio } from './chat-bubbles/GPTMessageAudio'
 export { GPTOrthographyMessage } from './chat-bubbles/GPTOrthographyMessage'
 export { MyMessage } from './chat-bubbles/MyMessage'
 export { SidebarMenuItem } from './sidebar/SidebarMenuItem'
